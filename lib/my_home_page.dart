@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:meal_ports/meal_ports.dart';
