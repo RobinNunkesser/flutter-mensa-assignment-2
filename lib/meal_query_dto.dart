@@ -7,5 +7,5 @@ class MealQueryDTO implements MealQuery {
   @override
   DateTime date;
 
-  MealQueryDTO({this.mensa, this.date});
+  MealQueryDTO({required this.mensa, required this.date});
 }

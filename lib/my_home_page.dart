@@ -7,7 +7,7 @@ import 'package:mensa/meal_query_dto.dart';
 import 'package:mock_meal_adapters/mock_meal_adapters.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     command
-        .execute(inDTO: MealQueryDTO(mensa: 42, date: DateTime.now()))
+        .execute(MealQueryDTO(mensa: 42, date: DateTime.now()))
         .then(success)
         .catchError(handleError);
   }

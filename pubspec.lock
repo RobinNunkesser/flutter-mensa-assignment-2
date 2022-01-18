@@ -49,7 +49,7 @@ packages:
       name: common_ports
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.5"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -108,7 +108,7 @@ packages:
       name: meal_ports
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.6"
   meta:
     dependency: transitive
     description:
@@ -122,7 +122,7 @@ packages:
       name: mock_meal_adapters
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.5"
   path:
     dependency: transitive
     description:
