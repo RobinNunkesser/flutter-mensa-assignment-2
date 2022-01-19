@@ -2,20 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:meal_ports/meal_ports.dart';
 import 'package:mensa/meal_query_dto.dart';
+import 'package:mensa/mensa_page.dart';
+import 'package:mensa/settings_page.dart';
 import 'package:mock_meal_adapters/mock_meal_adapters.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -23,6 +15,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var _selectedIndex = 0;
   var command = MockGetMealsCommand();
   final logger = Logger();
 
@@ -41,17 +34,41 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
+      body: body(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant),
+            label: "Mensa",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(
+          () {
+        _selectedIndex = index;
+      },
+    );
+  }
+
+  Widget body() {
+    switch (_selectedIndex) {
+      case 0:
+        return MensaPage();
+      case 1:
+        return SettingsPage();
+      default:
+        return MensaPage();
+    }
   }
 
   void success(List<MealCollection> collections) {
@@ -62,3 +79,4 @@ class _MyHomePageState extends State<MyHomePage> {
     logger.e(error);
   }
 }
+
