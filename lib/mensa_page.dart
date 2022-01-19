@@ -4,7 +4,6 @@ import 'package:meal_ports/meal_ports.dart';
 import 'package:mensa/collection_item.dart';
 import 'package:mensa/mappings.dart';
 import 'package:mensa/meal_query_dto.dart';
-import 'package:mensa/meal_view_model.dart';
 import 'package:mock_meal_adapters/mock_meal_adapters.dart';
 
 import 'collection_view_model.dart';
