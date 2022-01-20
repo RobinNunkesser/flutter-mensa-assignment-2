@@ -4,15 +4,24 @@ import 'package:mensa/meal_view_model.dart';
 
 extension CollectionMapping on MealCollection {
   CollectionViewModel toCollectionViewModel(int status) {
-
     String categoryName = "";
 
     switch (category) {
-      case MealCategory.none: categoryName = ""; break;
-    case MealCategory.dessert: categoryName = "Desserts"; break;
-    case MealCategory.dish: categoryName = "Hauptgerichte"; break;
-    case MealCategory.sidedish: categoryName = "Beilagen"; break;
-    case MealCategory.soup: categoryName = "Suppen / Eintöpfe"; break;
+      case MealCategory.none:
+        categoryName = "";
+        break;
+      case MealCategory.dessert:
+        categoryName = "Desserts";
+        break;
+      case MealCategory.dish:
+        categoryName = "Hauptgerichte";
+        break;
+      case MealCategory.sidedish:
+        categoryName = "Beilagen";
+        break;
+      case MealCategory.soup:
+        categoryName = "Suppen / Eintöpfe";
+        break;
     }
 
     return CollectionViewModel(
@@ -25,11 +34,24 @@ extension MealMapping on Meal {
   MealViewModel toMealViewModel(int status) {
     double? concretePrice;
     switch (status) {
-      case 0: concretePrice = price.students; break;
-      case 1: concretePrice = price.employees; break;
-      case 2: concretePrice = price.pupils; break;
-      case 3: concretePrice = price.others; break;
+      case 0:
+        concretePrice = price.students;
+        break;
+      case 1:
+        concretePrice = price.employees;
+        break;
+      case 2:
+        concretePrice = price.pupils;
+        break;
+      case 3:
+        concretePrice = price.others;
+        break;
     }
-    return MealViewModel(name, concretePrice != null ? concretePrice.toString() + ' €' : "Unknown price"  , image!);
+    return MealViewModel(
+        name,
+        concretePrice != null
+            ? concretePrice.toString() + ' €'
+            : "Unknown price",
+        image ?? "");
   }
 }
