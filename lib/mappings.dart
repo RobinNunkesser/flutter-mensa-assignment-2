@@ -1,9 +1,8 @@
+import 'package:common_ui/common_ui.dart';
 import 'package:meal_ports/meal_ports.dart';
-import 'package:mensa/collection_view_model.dart';
-import 'package:mensa/meal_view_model.dart';
 
 extension CollectionMapping on MealCollection {
-  CollectionViewModel toCollectionViewModel(int status) {
+  ListSection toListSection(int status) {
     String categoryName = "";
 
     switch (category) {
@@ -24,14 +23,14 @@ extension CollectionMapping on MealCollection {
         break;
     }
 
-    return CollectionViewModel(
+    return ListSection(
         title: categoryName,
-        meals: meals.map((meal) => meal.toMealViewModel(status)).toList());
+        items: meals.map((meal) => meal.toListItem(status)).toList());
   }
 }
 
 extension MealMapping on Meal {
-  MealViewModel toMealViewModel(int status) {
+  ListItem toListItem(int status) {
     double? concretePrice;
     switch (status) {
       case 0:
@@ -47,11 +46,11 @@ extension MealMapping on Meal {
         concretePrice = price.others;
         break;
     }
-    return MealViewModel(
-        name,
-        concretePrice != null
+    return ListItem(
+        title: name,
+        subtitle: concretePrice != null
             ? concretePrice.toString() + ' €'
             : "Unknown price",
-        image ?? "");
+        image: image);
   }
 }
